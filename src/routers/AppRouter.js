@@ -21,8 +21,8 @@ const AppRouter = (props) => {
                         <PrivateRoute>
                             <Route path="/dashboard" component={RecipeDashboard} />
                             <Route path="/add" component={AddRecipe} />
-                            <Route path="/read/:id" component={RecipeItemDetail} />
-                            <Route path="/edit/:id" component={EditRecipe} />
+                            <Route path="/read/:id" component={RecipeItemDetail} exact={true} />
+                            <Route path="/edit/:id" component={EditRecipe} exact={true} />
                         </PrivateRoute>
                     </Switch>
                 </div>

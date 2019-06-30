@@ -1,0 +1,24 @@
+.login-layout {
+    align-items: center;
+    background: url('/images/loginpage.jpg');
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    display: flex;
+}
+
+.login-layout__content {
+    margin-left: 700px;
+    text-align: center;
+    width: 50rem;
+    font-size: $l-size;
+}
+
+.login-layout__title {
+    line-height: 1;
+}
+
+.login-layout__subtitle {
+    line-height: 1;
+}

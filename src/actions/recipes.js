@@ -9,7 +9,7 @@ export const addRecipe = (recipe) => {
 
 export const startAddRecipe = (name = '', instructions = '', createdAt) => {
     return (dispatch, getState) => {
-        return firebase.database().ref(`users/${getState().auth.uid}/recipes`).push({ name, instructions, createdAt }).then((ref) => {
+        return firebase.database().ref(`users/${getState().auth.uid}/recipes`).push({ name, instructions, createdAt}).then((ref) => {
             dispatch(addRecipe({ id: ref.key, name, instructions, createdAt }))
         })
     }
@@ -46,28 +46,37 @@ export const startEditRecipe = (id, updates) => {
     }
 }
 
-export const addIngredients = (ingredient) => {
+export const addIngredients = (recipeId, ingredient) => {
     return {
         type: 'ADD_INGREDIENT',
-        ingredient
+        ingredient,
+        recipeId
     }
 }
 
-// export const startAddIngredient = (recipeId, name, available) => {
-//     return (dispatch, getState) => {
-//         return firebase.database().ref(`users/${getState().auth.uid}/recipes`).once('value').then((snapshot) => {
-//             let id
-//             snapshot.forEach((childSnapshot) => {
-//                 id = childSnapshot.key
-//             })
-//             if (recipeId === id) {
-//                 return firebase.database().ref(`users/${getState().auth.uid}/recipes/${id}/ingredients`).push({ name, available }).then((ref) => {
-//                     dispatch(addIngredients({ id: ref.key, name, available }))
-//                 })
-//             }
-//         })
-//     }
-// }
+export const startAddIngredient = (recipeId, name, available = false) => {
+    return (dispatch, getState) => {
+        return firebase.database().ref(`users/${getState().auth.uid}/recipes/${recipeId}/ingredients`).push({ name, available }).then((ref) => {
+            dispatch(addIngredients(recipeId, { id: ref.key, name, available }))
+        })
+    }
+}
+
+export const removeIngredient = (recipeId, ingredientId) => {
+    return {
+        type: 'REMOVE_INGREDIENT',
+        recipeId,
+        ingredientId
+    }
+}
+
+export const startRemoveIngredient = (recipeId, ingredientId) => {
+    return (dispatch, getState) => {
+        return firebase.database().ref(`users/${getState().auth.uid}/recipes/${recipeId}/ingredients/${ingredientId}`).remove().then(() => {
+            dispatch(removeIngredient(recipeId, ingredientId))
+        })
+    }
+}
 
 export const setRecipes = (recipes) => {
     return {
@@ -80,10 +89,10 @@ export const startSetRecipes = () => {
     return (dispatch, getState) => {
         return firebase.database().ref(`users/${getState().auth.uid}/recipes`).once('value').then((snapshot) => {
             const recipes = []
-            snapshot.forEach((childSnapshot) => {
+            snapshot.forEach((childSnapshot) => { 
                 recipes.push({
                     id: childSnapshot.key,
-                    ...childSnapshot.val()
+                    ...childSnapshot.val(),
                 })
             })
             dispatch(setRecipes(recipes))
@@ -91,3 +100,26 @@ export const startSetRecipes = () => {
     }
 }
 
+
+export const setIngredients = (recipeId, ingredients) => {
+    return {
+        type: 'SET_INGREDIENTS',
+        recipeId,
+        ingredients
+    }
+}
+
+export const startSetIngredients = (recipeId) => {
+    return (dispatch, getState) => {
+        return firebase.database().ref(`users/${getState().auth.uid}/recipes/${recipeId}/ingredients`).once('value').then((snapshot) => {
+            const ingredients = []
+            snapshot.forEach((childSnapshot) => {
+                ingredients.push({
+                    id: childSnapshot.key,
+                    ...childSnapshot.val()
+                })
+            })
+            dispatch(setIngredients(recipeId, ingredients))
+        })
+    }
+}

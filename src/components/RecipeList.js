@@ -15,6 +15,7 @@ const RecipeList = (props) => {
                     key={recipe.id}
                     name={recipe.name}
                     createdAt={recipe.createdAt}
+                    id={recipe.id}
                 />
             })
         }

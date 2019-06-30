@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const RecipeListItem = (props) => {
-    const link = `/read/${props.id}`
+    const link = `read/${props.id}`
     return (
         <div>
             <Link to={link} >
                 <h1>{props.name}</h1>
-                <span>{props.createdAt}</span>
+                <span>{moment(props.createdAt).format('MMMM Do, YYYY')}</span>
             </Link>
         </div>
     );

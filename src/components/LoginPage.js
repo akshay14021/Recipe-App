@@ -4,10 +4,12 @@ import { startLogin } from '../actions/auth';
 
 const LoginPage = (props) => {
     return (
-        <div>
-            <h1>Recipe Maker</h1>
-            <p>Write your recipe and never forget</p>
-            <button onClick={props.dispatch(startLogin)} >Login</button>
+        <div className="login-layout">
+            <div className="login-layout__content">
+                <h1 className="login-layout__title">Recipe Maker</h1>
+                <p className="login-layout__subtitle">Write your recipe and never forget</p>
+                <button className="button" onClick={props.dispatch(startLogin)} >Google Login</button>
+            </div>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 const defaultRecipeReducerState = []
+const ingredients = []
 
 const recipesReducer  = (state = defaultRecipeReducerState, action) => {
     switch (action.type) {
@@ -19,40 +20,38 @@ const recipesReducer  = (state = defaultRecipeReducerState, action) => {
                 }
             })
 
-        // case 'ADD_INGREDIENT':
-        //     return state.map((recipe) => {
-        //         if (recipe.id === action.recipeId) {
-        //             return  [...recipe.ingredients, action.ingredient] 
-        //         } else {
-        //             return recipe
-        //         }
-        //     })
-        // case 'REMOVE_INGREDIENT':
-        //     return state.map((recipe) => {
-        //         if (recipe.id === action.recipeId) {
-        //             const ingredientNew = recipe.ingredients.filter((ig) => {
-        //                 return ig.id !== action.ingredientId
-        //             })
-        //             return { ...recipe, ingredients: ingredientNew }
-        //         } else {
-        //             return recipe
-        //         }
-        //     })
+        case 'ADD_INGREDIENTS': 
+            return state.map((recipe) => {
+                if (recipe.id === action.recipeId) {
+                    return { ...recipe, ingredients: [...ingredients, action.ingredient] }
+                } else {
+                    return recipe
+                }
+            })
+
+        case 'REMOVE_INGREDIENT':
+            return state.map((recipe) => {
+                if (recipe.id === action.recipeId) {
+                    const igArray = recipe.ingredients.filter((ig) => {
+                        return ig.id !== action.ingredientId
+                    })
+                    return { ...recipe, ingredients: igArray }
+                } else {
+                    return recipe
+                }
+            })
 
         case 'SET_RECIPES':
             return action.recipes
 
-        // case 'EDIT_INGREDIENT':
-        //     return state.map((recipe) => {
-        //         if (recipe.id === action.recipeId) {
-        //             const igNew = recipe.ingredients.map((ig) => {
-        //                 return { ...ig, ...action.update }
-        //             })
-        //             return { ...recipe, ingredients: igNew }
-        //         } else {
-        //             return recipe
-        //         }
-        //     })
+        case 'SET_INGREDIENTS':
+            return state.map((recipe) => {
+                if (recipe.id === action.recipeId) {
+                    return { ...recipe, ingredients: action.ingredients }
+                } else {
+                    return recipe
+                }
+            })
 
         default:
             return state
