@@ -10,7 +10,7 @@ const RecipeItemDetail = (props) => {
     return (
         <div className="details">
             <div className="content-container">
-                <p className="details__heading">Title</p>
+                <p className="details__heading">Recipe Name</p>
                 <h1 className="details__title">{props.recipe.name}</h1>
                 <p className="details__heading">Preperation Instructions</p>
                 <div className="details__instructions">
