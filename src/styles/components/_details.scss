@@ -1,0 +1,21 @@
+.details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.details__title {
+    margin-top: 0;
+    color: $light-blue;
+    font-size: 4rem;
+}
+
+.details__heading {
+    text-decoration: underline;
+    color: $lightcoral;
+    font-weight: bold;
+    font-size: 2.3rem;
+}
+
+.details__instructions {
+    font-size: 3rem;
+}

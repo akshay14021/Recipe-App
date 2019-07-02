@@ -5,12 +5,10 @@ import moment from 'moment';
 const RecipeListItem = (props) => {
     const link = `read/${props.id}`
     return (
-        <div>
-            <Link to={link} >
-                <h1>{props.name}</h1>
-                <span>{moment(props.createdAt).format('MMMM Do, YYYY')}</span>
-            </Link>
-        </div>
+        <Link className="list-item" to={link} >
+            <h3 className="list-item__title">{props.name}</h3>
+            <span className="list-item__date">{moment(props.createdAt).format('MMMM Do, YYYY')}</span>
+        </Link>
     );
 };
 

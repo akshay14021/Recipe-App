@@ -32,9 +32,10 @@ class RecipeForm extends Component {
 
     render() {
         return (
-            <form onSubmit={this.onSubmitHandler}>
-                {this.state.error && <p>{this.state.error}</p>}
+            <form className="form" onSubmit={this.onSubmitHandler}>
+                {this.state.error && <p className="form__error">{this.state.error}</p>}
                 <input 
+                    className="text-input"
                     type="text" 
                     placeholder="Recipe Name" 
                     autoFocus
@@ -42,13 +43,14 @@ class RecipeForm extends Component {
                     onChange={this.onNameChange}    
                 />
                 <textarea 
+                    className="textarea"
                     placeholder="Instructions"
                     value={this.state.instructions}
                     onChange={this.onInstructionChange}
                 >
 
                 </textarea>
-                {this.props.recipe ? <button>Edit Recipe</button> : <button>Add Recipe</button>}
+                {this.props.recipe ? <button className="button button--addrecipe">Edit Recipe</button> : <button className="button button--addrecipe">Add Recipe</button>}
             </form>
         );
     }

@@ -1,0 +1,31 @@
+.header {
+    background: $light-blue;
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+    align-items: center;
+}
+
+.header__title {
+    color: $lightgreen;
+    text-decoration: none;
+}
+
+.header__title--span {
+    color: $lightcoral;
+}
+
+.header__icon {
+    margin-left: 1240px;
+    color: $lightcoral;
+    font-size: 3rem;
+}
+
+.header__icon--hotdog {
+    color: $lightcoral;
+    font-size: 3rem;
+    margin-right: 5px;
+}

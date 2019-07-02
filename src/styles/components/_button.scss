@@ -10,3 +10,72 @@
     line-height: 1;
     border-radius: 5px;
 }
+
+.button--logout {
+    padding: $s-size;
+    font-size: 2rem;
+    color: white;
+    background: lightgreen;
+    transition: background 0.3s ease;
+    &:hover {
+        background: lightcoral;
+        color: white;
+    }
+}
+
+.button--add {
+    background: lightblue;
+    margin: 30px 0 0 0;
+    font-size: 2rem;
+    color: $dark-blue;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    &:hover {
+        background: $dark-blue;
+        color: white;
+    }
+}
+
+.button--addrecipe {
+    font-size: 2.5rem;
+    color: white;
+    max-width: 200px;
+}
+
+.button--remove {
+    font-size: 2rem;
+    color: white;
+    width: 80px;
+    background: #fe5858;
+    transition: background 0.2s ease;
+    &:hover {
+        background: darken($color: #fe5858, $amount: 10%);
+    }
+}
+
+.button--edit {
+    font-size: 2.3rem;
+    padding: $s-size;
+    margin-top: 2rem;
+}
+
+.button--removeingredient {
+    border: none;
+    background: none;
+    color: grey;
+    margin-bottom: 0;
+    font-size: 2.5rem;
+    transition: color 0.3s ease;
+    &:hover {
+        color: $lightcoral;
+    }
+    line-height: 0;
+    padding-bottom: 0;
+}
+
+.button--addingredient {
+    padding-top: $s-size;
+    color: $light-blue;
+    background: none;
+    font-size: 2.6rem;
+}

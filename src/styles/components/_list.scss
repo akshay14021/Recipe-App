@@ -1,0 +1,57 @@
+.list-header {
+    background: $light-blue;
+    border: 1px solid darken($off-white, 7%);
+    color: $grey;
+    display: flex;
+    padding: $s-size $m-size;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    justify-content: space-between;
+    margin-top: $l-size;
+}
+
+.list-item {
+    border: 1px solid darken($color: $off-white, $amount: 7%);
+    border-top: none;
+    color: $lightgreen;
+    display: flex;
+    flex-direction: column;
+    padding: $s-size;
+    text-decoration: none;
+    transition: background .3s ease;
+    &:hover {
+        background: $off-white;
+    }
+
+    @media (min-width: $desktop-breakpoint) {
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: $m-size;
+    }
+}
+
+.list-item__title {
+    color: $dark-grey;
+    font-size: 2.3rem;
+    word-break: break-all;
+}
+
+.list-item__date {
+    font-size: 2.3rem;
+    color: grey;
+}
+
+.message--list {
+    color: $dark-blue;
+    max-width: 1000px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    margin-top: 4rem;
+    &:hover {
+        background: none
+    }
+}

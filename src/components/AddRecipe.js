@@ -6,13 +6,19 @@ import { startAddRecipe } from '../actions/recipes';
 const AddRecipe = (props) => {
     return (
         <div>
-            <h1>Add Recipe</h1>
-            <RecipeForm
-                onSubmit={(name, instruction, createdAt) => {
-                    props.dispatch(startAddRecipe(name, instruction, createdAt))
-                    props.history.push('/dashboard')
-                }}
-            />
+            <div className="page-header">
+                <div className="content-container">
+                    <h1 className="page-header__title">Add Recipe</h1>
+                </div>
+            </div>
+            <div className="content-container">
+                <RecipeForm
+                    onSubmit={(name, instruction, createdAt) => {
+                        props.dispatch(startAddRecipe(name, instruction, createdAt))
+                        props.history.push('/dashboard')
+                    }}
+                />
+            </div>
         </div>
     );
 };
