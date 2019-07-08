@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
+import Copyright from '../components/Copyright';
 
 const PrivateRoute = (props) => {
     return (
@@ -10,6 +11,7 @@ const PrivateRoute = (props) => {
             <div>
                 <Header/>
                 {props.children}
+                <Copyright/>
             </div> : <Redirect to="/" />
         }
         </div>
