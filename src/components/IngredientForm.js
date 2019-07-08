@@ -34,10 +34,9 @@ class IngredientForm extends Component {
                         className="text-input"
                         type="text"
                         placeholder="Ingredient Name"
-                        autoFocus
                         onChange={this.onNameChange}
                         value={this.state.name}
-                        />
+                    />
                     <button className="button button--addingredient"><FontAwesomeIcon icon={faPlus} /></button>
                 </div>
             </form>
